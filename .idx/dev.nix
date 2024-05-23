@@ -11,7 +11,9 @@
   ];
 
   # Sets environment variables in the workspace
-  env = {};
+  env = {
+    PORT = 6666;
+    };
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
@@ -23,6 +25,9 @@
       "vscjava.vscode-java-pack"
       "vscjava.vscode-java-test"
       "vscjava.vscode-maven"
+      "rangav.vscode-thunder-client"
+      "redhat.vscode-microprofile"
+      "redhat.vscode-quarkus"
     ];
 
     # Enable previews
@@ -32,7 +37,7 @@
         web = {
           # Example: run "npm run dev" with PORT set to IDX's defined port for previews,
           # and show it in IDX's web preview panel
-          command = ["./gradlew" ":bootRun" "--args='--server.port=$PORT'"];
+          command = ["./gradlew" ":quarkusDev" "-Dquarkus.http.port=$PORT"];
           manager = "web";
         };
       };
